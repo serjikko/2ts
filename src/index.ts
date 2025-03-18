@@ -11,7 +11,11 @@ const PORT: number = Number(process.env.PORT) || 3000;
 mongoose.connect("mongodb://localhost:27017/task-manager", {
   useNewUrlParser: true,
   useUnifiedTopology: true,
-});
+})
+.then(() => {
+    console.log('Connection established with MongoDB');
+})
+.catch(error => console.error(error.message));
 
 // Middleware
 app.use(bodyParser.json());
